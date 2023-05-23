@@ -11,15 +11,31 @@
     <div class="main">
 
         <div class="header">
-            <h1 id="title">Weather Dashboard</h1>
+            <h1 class="title">Weather Dashboard</h1>
         </div>
 
         <div class="left">
-            hi
+            <h2 class="header2"> Search for a City:</h2>
+            <br>
+            <input type="text" class="city" id="city" placeholder="San Diego">
+            <br>
+            <button id="searchBtn" class="searchBtn"> Search</button>
+            <br>
+            <hr>
+            <div id="historyItem">hi</div>
         </div>
 
         <div class="right">
-             hi
+            <div class="results">
+                <span id="displayCity"></span>
+                <span id="date"></span>
+                <img class="icon" src="">
+                <br>
+                <span class="display" id="temp"></span>&deg; <br>
+                <span class="display" id="description"></span> <br>
+                <span class="display" id="wind"></span> mph<br>
+                <span class="display" id="humidity"></span> %<br>
+            </div>
         </div>
     </div>
 
