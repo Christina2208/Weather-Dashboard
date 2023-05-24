@@ -67,3 +67,48 @@
     font-size: 15px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
+.results{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid black;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+#date{
+    font-size: 20px;
+    font-weight: bold;
+}
+#displayCity{
+    font-size: 20px;
+    font-weight: bold;
+}
+.display{
+    font-size: 17px;
+    font-weight: lighter;
+}
+.header3{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.card-container{
+    width: 100%;
+    background-color: orange;
+    padding-top: 10px;
+    display:flex;
+}
+.card{
+    float: left;
+    width: 17%;
+    padding: 10px;
+    background-color:rgb(47, 48, 98);
+    justify-content: space-between;
+    height: auto;
+    color: white;
+    font-size: 17px;
+    font-weight: lighter;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
