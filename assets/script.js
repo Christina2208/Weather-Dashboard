@@ -2,7 +2,7 @@ let city = document.getElementById("city");
 let searchBtn = document.getElementById("searchBtn");
 let displayCity = document.getElementById("displayCity");
 let date = document.getElementById("date");
-let icon = document.getElementsByClassName("icon");
+let icon = document.querySelector(".icon");
 let temp = document.getElementById("temp");
 let description = document.getElementById("description");
 let wind = document.getElementById("wind");
@@ -26,10 +26,20 @@ function fetchData(value){
     .then((res)=>res.json())
     .then((forecast)=>{
         displayCity.innerHTML=forecast.city.name;
-        temp.innerHTML=forecast.list[0].main.temp;
-        humidity.innerHTML=forecast.list[0].main.humidity;
+        temp.innerHTML=`${Math.round((((forecast.list[0].main.temp)-273.15)*1.8)+32)}&#176;F`;
+        humidity.innerHTML=`${forecast.list[0].main.humidity} %`;
         description.innerHTML=forecast.list[0].weather[0].main;
-        wind.innerHTML=forecast.list[0].wind.speed;
+        wind.innerHTML=`${forecast.list[0].wind.speed} mph`;
+
+    if(description.innerHTML=="Clouds"){
+        icon.src="./assets/images/cloud-solid.svg"
+    } else if (description.innerHTML=="Clear"){
+        icon.src="./assets/images/sun-solid.svg"
+    } else if (description.innerHTML=="Rain"){
+        icon.src="./assets/images/cloud-rain-solid.svg"
+    } else if (description.innerHTML=="Snow"){
+        icon.src="./assets/images/snowflake-regular.svg"
+    }
     })
 }
 
