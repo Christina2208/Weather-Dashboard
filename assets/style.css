@@ -20,7 +20,6 @@
 .left{
     display: inline-block;
     width: 30%;
-    background-color: blueviolet;
     padding-left: 10px;
     padding-top: 20px;
     vertical-align: top;
@@ -28,7 +27,6 @@
 .right{
     display: inline-block;
     width: 68%;
-    background-color:aquamarine;
     padding-left: 10px;
     padding-top: 20px;
     vertical-align: top;
@@ -96,7 +94,6 @@
 }
 .card-container{
     width: 100%;
-    background-color: orange;
     padding-top: 10px;
     display:flex;
 }
@@ -104,11 +101,36 @@
     float: left;
     width: 17%;
     padding: 10px;
-    background-color:rgb(47, 48, 98);
+    background-color:rgb(99, 144, 180);
     justify-content: space-between;
     height: auto;
     color: white;
     font-size: 17px;
     font-weight: lighter;
     font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+.icon1{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+.icon2{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+.icon3{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+.icon4{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+.icon5{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
 }
