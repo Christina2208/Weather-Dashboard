@@ -40,8 +40,22 @@ function fetchData(value){
     } else if (description.innerHTML=="Snow"){
         icon.src="./assets/images/snowflake-regular.svg"
     }
+    
+    setFiveDay(forecast);
     })
+    setStorage();
 }
+
+function setStorage(){
+    localStorage.setItem("city", city.value);
+    setCity();
+}
+
+function setCity(){
+    historyItem.classList.add("archievedItems");
+    historyItem.innerHTML=localStorage.getItem("city");
+}
+
 
 // fetch ("https://api.openweathermap.org/data/2.5/forecast?q=london&appid=1c062c0db0b1eb5a3f1e15c0c0f7cc64")
 //     .then((res)=>res.json()).then(console.log)
