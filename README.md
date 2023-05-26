@@ -13,9 +13,7 @@ To install this, simply click on the deployment link.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+To use, simply click the deployment link which will open the application and then type the preffered city/location. Then, the forecast data for current and future will present itself in the application page.
 
 ![ScreenShot](https://github.com/Christina2208/Weather-Dashboard/blob/main/assets/images/Screen%20Shot%202023-05-25%20at%2011.28.22%20PM.png)
 
