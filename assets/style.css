@@ -9,7 +9,7 @@
 .header{
     width: 100%;
     height: 80px;
-    background-color: lightblue; /*make color darker*/
+    background-color: rgb(99, 144, 180); /*make color darker*/
     text-align: center;
 }
 .title{
@@ -48,7 +48,7 @@
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: lightblue; /*make color darker*/
+    background-color: rgb(99, 144, 180); /*make color darker*/
     color: white;
     font-size: 20px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -60,7 +60,7 @@
     margin: 0;   
     margin-top: 10px;
     margin-bottom: 5px;
-    background-color: lightblue;
+    background-color: rgb(99, 144, 180);
     color: black;
     font-size: 15px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;

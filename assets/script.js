@@ -40,6 +40,7 @@ let humidityCard3 = document.querySelector(".humidityCard3");
 let humidityCard4 = document.querySelector(".humidityCard4");
 let humidityCard5 = document.querySelector(".humidityCard5");
 
+
 searchBtn.addEventListener("click", searchFunc);
 
 function searchFunc(){
