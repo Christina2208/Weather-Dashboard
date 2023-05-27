@@ -3,7 +3,7 @@
 ## Description
 A weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
-- The motivation behind this project was to create a working forecast app that has a weather api applied and fully functioning. 
+- The motivation behind this project was to create a working forecast app that has a weather api applied and is fully functioning. 
 - This project was built to allow the user to have access to the weather for the week.
 - The problem that this solves is it allows for the user to see the current and future weather. 
 - I learned how to install and use a api in my javascript. 

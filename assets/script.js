@@ -7,7 +7,7 @@ let temp = document.getElementById("temp");
 let description = document.getElementById("description");
 let wind = document.getElementById("wind");
 let humidity = document.getElementById("humidity");
-let historyItem = document.getElementById("historyItem");
+let historyBox = document.querySelector(".historyBox");
 let today = new Date().toLocaleDateString();
 let dateCard1 = document.querySelector(".dateCard1");
 let dateCard2 = document.querySelector(".dateCard2");
@@ -39,7 +39,7 @@ let humidityCard2 = document.querySelector(".humidityCard2");
 let humidityCard3 = document.querySelector(".humidityCard3");
 let humidityCard4 = document.querySelector(".humidityCard4");
 let humidityCard5 = document.querySelector(".humidityCard5");
-
+let archievedItems = document.querySelectorAll(".archievedItems");
 
 searchBtn.addEventListener("click", searchFunc);
 
@@ -47,9 +47,8 @@ function searchFunc(){
 date.innerHTML=today;
 if (searchBtn){
     fetchData(city.value)
-    setCity();
-    city.value = "";
-}
+    setStorage()
+} city.value = "";
 }
 
 function fetchData(value){
@@ -57,10 +56,10 @@ function fetchData(value){
     .then((res)=>res.json())
     .then((forecast)=>{
         displayCity.innerHTML=forecast.city.name;
-        temp.innerHTML=`${Math.round((((forecast.list[0].main.temp)-273.15)*1.8)+32)}&#176;F`;
-        humidity.innerHTML=`${forecast.list[0].main.humidity} %`;
+        temp.innerHTML=`Temperature: ${Math.round((((forecast.list[0].main.temp)-273.15)*1.8)+32)}&#176;F`;
+        humidity.innerHTML=`Humidity: ${forecast.list[0].main.humidity} %`;
         description.innerHTML=forecast.list[0].weather[0].main;
-        wind.innerHTML=`${forecast.list[0].wind.speed} mph`;
+        wind.innerHTML=`Wind: ${forecast.list[0].wind.speed} mph`;
 
     if(description.innerHTML=="Clouds"){
         icon.src="./assets/images/cloud-solid.svg"
@@ -74,28 +73,43 @@ function fetchData(value){
     
     setFiveDay(forecast);
     })
-    setStorage();
 }
+
+let cityArr = []
 
 function setStorage(){
-    localStorage.setItem("city", city.value);
-    setCity();
+    JSON.parse(localStorage.getItem("cityArr"))
+    cityArr.push(city.value)
+    localStorage.setItem("cityArr", JSON.stringify(cityArr))
+
+    cityArr.forEach((value)=>{
+        cityArr.shift(city.value)
+
+        let newDiv = document.createElement("button");
+        newDiv.innerHTML=value
+        newDiv.classList.add("archievedItems")
+        historyBox.appendChild(newDiv)
+    })
 }
 
-function setCity(){
-    historyItem.classList.add("archievedItems");
-    historyItem.innerHTML=localStorage.getItem("city");
-}
+historyBox.addEventListener("click", function(e){
+    if (e.target.tagName === "BUTTON"){
+        const button = e.target;
+        if(button.className === "archievedItems"){
+            fetchData(button.innerHTML)
+        }
+    }
+})
 
 function setFiveDay(forecast){
     //tomorrow index 8
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate()+1);
 dateCard1.innerHTML=tomorrow.toLocaleDateString();
-tempCard1.innerHTML=`${Math.round((((forecast.list[8].main.temp)-273.15)*1.8)+32)}&#176;F`;
-        humidityCard1.innerHTML=`${forecast.list[8].main.humidity} %`;
+tempCard1.innerHTML=`Temp: ${Math.round((((forecast.list[8].main.temp)-273.15)*1.8)+32)}&#176;F`;
+        humidityCard1.innerHTML=`Humidity: ${forecast.list[8].main.humidity} %`;
         descCard1.innerHTML=forecast.list[8].weather[0].main;
-        windCard1.innerHTML=`${forecast.list[8].wind.speed} mph`;
+        windCard1.innerHTML=`Wind: ${forecast.list[8].wind.speed} mph`;
 
         if(descCard1.innerHTML=="Clouds"){
             icon1.src="./assets/images/cloud-solid.svg"
@@ -110,10 +124,10 @@ tempCard1.innerHTML=`${Math.round((((forecast.list[8].main.temp)-273.15)*1.8)+32
 let secondDay = new Date();
 secondDay.setDate(secondDay.getDate()+2);
 dateCard2.innerHTML=secondDay.toLocaleDateString();
-tempCard2.innerHTML=`${Math.round((((forecast.list[16].main.temp)-273.15)*1.8)+32)}&#176;F`;
-    humidityCard2.innerHTML=`${forecast.list[16].main.humidity} %`;
+tempCard2.innerHTML=`Temp: ${Math.round((((forecast.list[16].main.temp)-273.15)*1.8)+32)}&#176;F`;
+    humidityCard2.innerHTML=`Humidity: ${forecast.list[16].main.humidity} %`;
     descCard2.innerHTML=forecast.list[16].weather[0].main;
-    windCard2.innerHTML=`${forecast.list[16].wind.speed} mph`;
+    windCard2.innerHTML=`Wind: ${forecast.list[16].wind.speed} mph`;
 
     if(descCard2.innerHTML=="Clouds"){
         icon2.src="./assets/images/cloud-solid.svg"
@@ -128,10 +142,10 @@ tempCard2.innerHTML=`${Math.round((((forecast.list[16].main.temp)-273.15)*1.8)+3
 let thirdDay = new Date();
 thirdDay.setDate(thirdDay.getDate()+3);
 dateCard3.innerHTML=thirdDay.toLocaleDateString();
-tempCard3.innerHTML=`${Math.round((((forecast.list[24].main.temp)-273.15)*1.8)+32)}&#176;F`;
-    humidityCard3.innerHTML=`${forecast.list[24].main.humidity} %`;
+tempCard3.innerHTML=`Temp: ${Math.round((((forecast.list[24].main.temp)-273.15)*1.8)+32)}&#176;F`;
+    humidityCard3.innerHTML=`Humidity: ${forecast.list[24].main.humidity} %`;
     descCard3.innerHTML=forecast.list[24].weather[0].main;
-    windCard3.innerHTML=`${forecast.list[24].wind.speed} mph`;
+    windCard3.innerHTML=`Wind: ${forecast.list[24].wind.speed} mph`;
 
     if(descCard3.innerHTML=="Clouds"){
         icon3.src="./assets/images/cloud-solid.svg"
@@ -146,10 +160,10 @@ tempCard3.innerHTML=`${Math.round((((forecast.list[24].main.temp)-273.15)*1.8)+3
 let fourthDay = new Date();
 fourthDay.setDate(thirdDay.getDate()+4);
 dateCard4.innerHTML=fourthDay.toLocaleDateString();
-tempCard4.innerHTML=`${Math.round((((forecast.list[32].main.temp)-273.15)*1.8)+32)}&#176;F`;
-    humidityCard4.innerHTML=`${forecast.list[32].main.humidity} %`;
+tempCard4.innerHTML=`Temp: ${Math.round((((forecast.list[32].main.temp)-273.15)*1.8)+32)}&#176;F`;
+    humidityCard4.innerHTML=`Humidity: ${forecast.list[32].main.humidity} %`;
     descCard4.innerHTML=forecast.list[32].weather[0].main;
-    windCard4.innerHTML=`${forecast.list[32].wind.speed} mph`;
+    windCard4.innerHTML=`Wind: ${forecast.list[32].wind.speed} mph`;
 
     if(descCard4.innerHTML=="Clouds"){
         icon4.src="./assets/images/cloud-solid.svg"
@@ -164,10 +178,10 @@ tempCard4.innerHTML=`${Math.round((((forecast.list[32].main.temp)-273.15)*1.8)+3
 let fifthDay = new Date();
 fifthDay.setDate(thirdDay.getDate()+5);
 dateCard5.innerHTML=fifthDay.toLocaleDateString();
-tempCard5.innerHTML=`${Math.round((((forecast.list[39].main.temp)-273.15)*1.8)+32)}&#176;F`;
-    humidityCard5.innerHTML=`${forecast.list[39].main.humidity} %`;
+tempCard5.innerHTML=`Temp: ${Math.round((((forecast.list[39].main.temp)-273.15)*1.8)+32)}&#176;F`;
+    humidityCard5.innerHTML=`Humidity: ${forecast.list[39].main.humidity} %`;
     descCard5.innerHTML=forecast.list[39].weather[0].main;
-    windCard5.innerHTML=`${forecast.list[39].wind.speed} mph`;
+    windCard5.innerHTML=`Wind: ${forecast.list[39].wind.speed} mph`;
 
     if(descCard5.innerHTML=="Clouds"){
         icon5.src="./assets/images/cloud-solid.svg"
