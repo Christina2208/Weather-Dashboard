@@ -15,7 +15,7 @@ To install this, simply click on the deployment link.
 
 To use, simply click the deployment link which will open the application and then type the preffered city/location. Then, the forecast data for current and future will present itself in the application page.
 
-![ScreenShot](https://github.com/Christina2208/Weather-Dashboard/blob/main/assets/images/Screen%20Shot%202023-05-25%20at%2011.28.22%20PM.png)
+![ScreenShot](https://github.com/Christina2208/Weather-Dashboard/blob/main/assets/images/Screen%20Shot%202023-05-27%20at%207.26.33%20PM.png)
 
 ## License
 
